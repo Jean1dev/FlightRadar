@@ -11,15 +11,33 @@ class App:
         self.msg.pack()
 
 
+def checkered(canvas, line_distance):
+   # vertical lines at an interval of "line_distance" pixel
+   for x in range(line_distance,canvas_width,line_distance):
+      canvas.create_line(x, 0, x, canvas_height, fill="#476042")
+   # horizontal lines at an interval of "line_distance" pixel
+   for y in range(line_distance,canvas_height,line_distance):
+      canvas.create_line(0, y, canvas_width, y, fill="#476042")
+
+
 ##CONFIG INICIAL
 root = Tk()
 root.title("Radar de avioes")
 root.wm_iconbitmap("icon.ico")
-root.geometry("1260x780")
+root.geometry("800x600")
 
-img = PhotoImage(file="/Users/jeanfernandes/Documents/git/temp/FlightRadar/plano.png")
-graphic = Label(root, Image=img)
-graphic.pack()
+
+canvas_width = 700
+canvas_height = 500 
+w = Canvas(root, 
+           width=canvas_width,
+           height=canvas_height)
+w.pack()
+
+checkered(w,10)
+#img = PhotoImage(file="/Users/jeanfernandes/Documents/git/temp/FlightRadar/plano.png")
+#graphic = Label(root, Image=img)
+#graphic.pack()
 
 App(root)
 root.mainloop()
