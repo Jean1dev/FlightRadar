@@ -2,6 +2,10 @@ import Rings from "./Rings";
 import BaseLayout from "./BaseLayout";
 
 export default class Grid extends BaseLayout{
+
+    defaultWidth = 500
+    defaultHeight = 500
+    
     cell ?: {
         width: any,
         height: any

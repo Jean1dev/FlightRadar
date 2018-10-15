@@ -7,9 +7,12 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
+            "name": "Launch in Chrome",
+            "url": "http://localhost:8100",
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/www"
+            ]
         }
     ]
 }
