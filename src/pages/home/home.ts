@@ -4,6 +4,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import Canvas from '../../models/Canvas';
 import { Observable } from 'Rxjs/rx'
+import { AngularFireList } from 'angularfire2/database';
 
 //declare var canvas
 
@@ -24,7 +25,7 @@ export class HomePage {
 
   public canvas: Canvas
   public data: Airship
-  public airships: Observable< Airship[] >
+  public airships: AngularFireList< Airship >
 
   constructor(
     public FireService: AirshipProvider,
@@ -34,7 +35,7 @@ export class HomePage {
     this.canvas = new Canvas(this.canvasEl.nativeElement)
     this.data = new Airship
     this.canvas.configurar()
-    this.airships = this.FireService.mapListKeys<Airship>(this.FireService.airships)
+    this.airships = this.FireService.getAll()
     this.run()
   }
 

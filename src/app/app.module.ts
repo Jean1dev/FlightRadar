@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -10,6 +11,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2'
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AirshipProvider } from '../providers/airship/airship';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const firebaseAppConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyBTF8VlDFbLknBBRuO5fKxiJ1kNyjcrsXU",
@@ -21,15 +25,17 @@ const firebaseAppConfig: FirebaseAppConfig = {
 
 @NgModule({
   declarations: [
-    MyApp,
+    MyApp, 
     HomePage,
     ListPage
   ],
   imports: [
+    HttpClientModule,
+    HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseAppConfig),
-    AngularFireDatabaseModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,6 +46,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    AirshipProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -18,7 +18,8 @@ export class AirshipProvider {
 
   constructor(
     public db: AngularFireDatabase,
-    public http: HttpClient) {
+    public http: HttpClient) 
+  {
     this.initialize()
   }
 
@@ -29,18 +30,12 @@ export class AirshipProvider {
   }
 
   getAll(): AngularFireList<Airship> {
-    return this.airships
-  }
-
-  //metodo generico trouxe das classes genericas do neura
-  mapListKeys<T>(list: AngularFireList<T>): Observable<T[]> {
-    return list
-      .snapshotChanges()
-      .map(actions => actions.map(action => ({ $key: action.key, ...action.payload.val() })));
+    return this.airships 
   }
 
   private initialize() {
     this.airships = this.db.list<Airship>(`/airship/`,
       (ref: firebase.database.Reference) => ref.orderByChild('timestamp'))
   }
+
 }
