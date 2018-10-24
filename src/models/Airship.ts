@@ -1,4 +1,4 @@
-export interface AirshipAttributes {
+export abstract class AirshipAttributes {
     _id?: any
     width?: number
     height?: number
@@ -6,13 +6,24 @@ export interface AirshipAttributes {
     y?: number
     direction?: number
     velocity?: any
+    raio?: number // esqueci como e raio em ingles
+    angle?: number
 }
 
-export class Airship {
+export class Airship extends AirshipAttributes {
 
     props?: AirshipAttributes
     airships?: [AirshipAttributes]
     timestamp?: any
+
+    constructor() {
+        super()
+        this._id =  this.generateId()
+    }
+
+    private generateId() {
+        return Math.floor(Math.random() * (999 - 1))
+    }
 
     mockAirships() {
         this.airships.push({

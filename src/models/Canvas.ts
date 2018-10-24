@@ -112,6 +112,9 @@ export default class Canvas extends BaseLayout {
         this.sweepAngle += this.sweepSpeed / this.FPS
     }
 
+    public putAirship() {
+
+    }
 
     drawCircle() {
         this.clearCanvas();

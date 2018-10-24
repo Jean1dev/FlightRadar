@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Inserir um aviao
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page1">
+  
+    <ion-item id="page-toggle4">
+      <ion-label>
+        Real time Sync
+      </ion-label>
+      <ion-toggle color="positive" checked="true"></ion-toggle>
+    </ion-item>
+    <ion-item id="page-input5">
+      <ion-label></ion-label>
+      <ion-input type="number" placeholder="X" [(ngModel)]="dataForm.x"></ion-input>
+    </ion-item>
+    <ion-item id="page-input6">
+      <ion-label></ion-label>
+      <ion-input type="number" placeholder="Y" [(ngModel)]="dataForm.y"></ion-input>
+    </ion-item>
+    <ion-item id="page-input8">
+      <ion-label></ion-label>
+      <ion-input type="number" placeholder="Raio" [(ngModel)]="dataForm.raio"></ion-input>
+    </ion-item>
+    <ion-item id="page-input11">
+      <ion-label></ion-label>
+      <ion-input type="number" placeholder="Angulo" [(ngModel)]="dataForm.angle"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Velocidade: {{dataForm.velocity}} km</ion-label>
+        <ion-range min="20" max="80" step="2" [(ngModel)]="dataForm.velocity" >
+          <ion-icon small range-left name="ios-speedometer-outline"></ion-icon>
+          <ion-icon range-right name="ios-speedometer-outline"></ion-icon>
+        </ion-range>
+      </ion-item>
+
+    <ion-item id="page-input10">
+      <ion-label></ion-label>
+      <ion-input type="number" placeholder="Direcao" [(ngModel)]="dataForm.direction"></ion-input>
+    </ion-item>
+  
+  <button (click)="put()" ion-button color="positive" block>
+    Put
+  </button>
+</ion-content>

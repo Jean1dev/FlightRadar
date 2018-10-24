@@ -3,13 +3,39 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Radar</ion-title>
+    <ion-toolbar>
+      <ion-segment [(ngModel)]="view">
+        <ion-segment-button value="radar">
+          Radar
+        </ion-segment-button>
+        <ion-segment-button value="input">
+          Informacoes
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+
+    <ion-toolbar>
+      <ion-searchbar></ion-searchbar>
+    </ion-toolbar>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div class="ion-canvas">
-    <canvas #canvas></canvas>
+  <div [ngSwitch]="view">
+
+    <ion-list *ngSwitchCase="'radar'" no-lines>
+      <div class="ion-canvas">
+        <canvas #canvas></canvas>
+      </div>
+      <button ion-button (click)="start()">Vai filhao</button>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'input'" no-lines></ion-list>
   </div>
-  <button ion-button (click)="start()">Vai filhao</button>
+
+  <ion-fab right bottom>
+    <button (click)="goToForm()" ion-fab><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
 </ion-content>

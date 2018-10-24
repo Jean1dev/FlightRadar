@@ -14,28 +14,32 @@ import { Observable } from 'Rxjs';
 @Injectable()
 export class AirshipProvider {
 
-  public airships: AngularFireList<Airship>
+  public airships: Observable<Airship[]>
 
   constructor(
     public db: AngularFireDatabase,
-    public http: HttpClient) 
-  {
+    public http: HttpClient) {
     this.initialize()
   }
 
   create(airship: Airship) {
-    return this.db.object<Airship>(`/airship/`)
+    return this.db.object<Airship>(`/airship/${airship._id}`)
       .set(airship)
     //fazer um catch pra pegar os erros
   }
 
-  getAll(): AngularFireList<Airship> {
-    return this.airships 
-  }
+ // getAll(): AngularFireList<Airship> {
+    //return this.airships  }
 
   private initialize() {
-    this.airships = this.db.list<Airship>(`/airship/`,
-      (ref: firebase.database.Reference) => ref.orderByChild('timestamp'))
+    this.airships = this.mapListKeys<Airship>(this.db.list<Airship>(`/airship/`,
+      (ref: firebase.database.Reference) => ref.orderByChild('timestamp')))
+  }
+
+  private mapListKeys<T>(list: AngularFireList<T>): Observable<T[]> {
+    return list
+      .snapshotChanges()
+      .map(actions => actions.map(action => ({ $key: action.key, ...action.payload.val() })));
   }
 
 }

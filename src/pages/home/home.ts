@@ -26,6 +26,7 @@ export class HomePage {
   public canvas: Canvas
   public data: Airship
   public airships: AngularFireList< Airship >
+  public view: string = 'radar'
 
   constructor(
     public FireService: AirshipProvider,
@@ -35,7 +36,7 @@ export class HomePage {
     this.canvas = new Canvas(this.canvasEl.nativeElement)
     this.data = new Airship
     this.canvas.configurar()
-    this.airships = this.FireService.getAll()
+    //this.airships = this.FireService.getAll()
     this.run()
   }
 
@@ -53,7 +54,11 @@ export class HomePage {
     this.canvas.animateSweep()
   }
 
-  start() {
+  public start() {
     this.loop()
+  }
+
+  public goToForm() {
+    this.navCtrl.push('FormPage')
   }
 }
