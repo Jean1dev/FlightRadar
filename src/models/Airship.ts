@@ -1,3 +1,4 @@
+
 export abstract class AirshipAttributes {
     _id?: any
     width?: number
@@ -19,6 +20,7 @@ export class Airship extends AirshipAttributes {
     constructor() {
         super()
         this._id =  this.generateId()
+        this.timestamp = new Date().getTime()
     }
 
     private generateId() {
