@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AirshipProvider } from '../../providers/airship/airship';
 import { Airship } from '../../models/Airship';
-import { AngularFireList } from 'angularfire2/database';
 import { Observable } from 'Rxjs';
 
 @Component({
@@ -34,6 +33,11 @@ export class ListPage {
 
   public itemTapped(event, item) {
 
+  }
+
+  public itemRemove(item) {
+    console.log(item)
+    this.service.remove(item.$key)
   }
 }
 

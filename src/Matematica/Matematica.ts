@@ -34,7 +34,7 @@ export default class Matematica {
     }
 
     public calcular_angulo(x: number, y: number): number {
-        if(x == 0  && y ==0) return 0
+        if(x == 0  && y == 0) return 0
 
         if(x == 0 && y > 0) return 90
 

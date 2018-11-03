@@ -28,6 +28,10 @@ export class AirshipProvider {
     //fazer um catch pra pegar os erros
   }
 
+  remove(key: any) {
+    return this.db.object<Airship>(`/airship/${key}`).remove()
+  }
+
  // getAll(): AngularFireList<Airship> {
     //return this.airships  }
 

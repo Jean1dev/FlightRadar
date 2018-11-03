@@ -8,16 +8,32 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items | async" (click)="itemTapped($event, item)">
-      <ion-icon name="md-jet" item-start></ion-icon>
-      {{item.velocity}}
-      <div class="item-note" item-end>
-        {{item.raio}}
-      </div>
-    </button>
+  <ion-list >
+        <ion-item-sliding *ngFor="let item of items | async" >
+
+            <ion-item >
+
+                <button ion-item  (click)="itemTapped($event, item)">
+                    <ion-icon name="md-jet" item-start></ion-icon>
+                    Km/h : {{item.velocity}} 
+                    <!--<div class="item-note" item-end>-->
+                     raio: {{item.raio}}
+                    
+                  </button>
+        
+            </ion-item>
+
+            <ion-item-options side="right">
+              <button (click)="itemRemove(item)" color="danger" ion-button>
+                <ion-icon name="ios-trash-outline"></ion-icon>
+                Delete
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+    
   </ion-list>
   <!--<div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
   </div>-->
 </ion-content>
+

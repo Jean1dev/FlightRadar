@@ -3,39 +3,153 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-toolbar>
-      <ion-segment [(ngModel)]="view">
-        <ion-segment-button value="radar">
-          Radar
-        </ion-segment-button>
-        <ion-segment-button value="input">
-          Informacoes
-        </ion-segment-button>
-      </ion-segment>
-    </ion-toolbar>
 
     <ion-toolbar>
       <ion-searchbar></ion-searchbar>
     </ion-toolbar>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <div [ngSwitch]="view">
 
-    <ion-list *ngSwitchCase="'radar'" no-lines>
-      <div class="ion-canvas">
-        <canvas #canvas></canvas>
+
+    <div class="ion-canvas">
+
+      <div class="prof">
+        <img src="assets/imgs/kinho.png"/>
       </div>
-      <button ion-button (click)="start()">Vai filhao</button>
 
-    </ion-list>
+      <canvas #canvas></canvas>
+    </div>
+    <button ion-button (click)="start()">Vai filhao</button>
 
-    <ion-list *ngSwitchCase="'input'" no-lines></ion-list>
+
+
+    <!-- GRID-->
+    <div class="grid">
+
+
+      <div class="box green">
+        <ion-card id="card-padrao">
+          <ion-list>
+            <ion-item>
+              <ion-label floating></ion-label>
+              <ion-input type="number" placeholder="X:"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating></ion-label>
+              <ion-input type="number" placeholder="Y:"></ion-input>
+            </ion-item>
+            <button ion-button outline color="positive" block>
+              MOVER
+            </button>
+          </ion-list>
+        </ion-card>
+      </div>
+
+
+      <div class="box green">
+        <ion-card id="card-padrao">
+          <ion-list>
+            <ion-item>
+              <ion-label floating></ion-label>
+              <ion-input type="number" placeholder="X:"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating></ion-label>
+              <ion-input type="number" placeholder="Y:"></ion-input>
+            </ion-item>
+            <button ion-button outline color="positive" block>
+              ESCALONAR
+            </button>
+          </ion-list>
+        </ion-card>
+      </div>
+
+
+      <div class="box turquoise">
+        <ion-card id="card-padrao">
+          <ion-list>
+            <ion-item>
+              <ion-label floating></ion-label>
+              <ion-input type="number" placeholder="X:"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating></ion-label>
+              <ion-input type="number" placeholder="Y:"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating></ion-label>
+              <ion-input type="number" placeholder="Angulo:"></ion-input>
+            </ion-item>
+            <button ion-button outline color="positive" block>
+              ROTACIONAR
+            </button>
+          </ion-list>
+        </ion-card>
+      </div>
+
+
+      <div class="box blue">
+        <ion-card id="card-padrao">
+          <ion-list>
+            <ion-item>
+              <ion-label floating></ion-label>
+              <ion-input type="number" placeholder="Distancia minima:"></ion-input>
+            </ion-item>
+            <button ion-button outline color="positive" block>
+              Avioes proximos ao Aeroporto
+            </button>
+          </ion-list>
+        </ion-card>
+      </div>
+
+
+      <div class="box turquoise">
+        <ion-card id="card-padrao">
+          <ion-list>
+            <ion-item>
+              <ion-label floating></ion-label>
+              <ion-input type="number" placeholder="Distancia minima:"></ion-input>
+            </ion-item>
+            <button ion-button outline color="positive" block>
+              Avioes proximos
+            </button>
+          </ion-list>
+        </ion-card>
+      </div>
+
+
+      <div class="box blue">
+        <ion-card id="card-padrao">
+          <ion-list>
+            <ion-item>
+              <ion-label floating></ion-label>
+              <ion-input type="number" placeholder="Tempo minimo:"></ion-input>
+            </ion-item>
+            <button ion-button outline color="positive" block>
+              Em Rota de colisao
+            </button>
+          </ion-list>
+        </ion-card>
+      </div>
+
+    </div>
+
   </div>
 
   <ion-fab right bottom>
-    <button (click)="goToForm()" ion-fab><ion-icon name="add"></ion-icon></button>
+    <button (click)="goToForm()" ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
   </ion-fab>
+
+
+
+  <div>
+    <img src="assets/imgs/kinho.png">
+  </div>
 
 </ion-content>

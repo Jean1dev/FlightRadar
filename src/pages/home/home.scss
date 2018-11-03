@@ -1,5 +1,10 @@
 page-home {
 
+  .prof {
+    background-color: black;
+    margin-right: 500px;
+  }
+
     canvas {
         background: #eee;
       }
@@ -10,5 +15,74 @@ page-home {
     .form-basico {
       margin-left: 75%
     }  
+
+    img {
+      position: relative;
+      float: right;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: minmax(150px, auto);
+  }
+
+  .box {
+    border-radius: 5px;
+    padding: 3em;
+    margin-left: 5px;
+    margin-right: 5px;
+    flex: 1 1 300px;
+  }
+
+  .grid > * {
+    margin-bottom: 10px;
+    }
+  // Add the necessary classes for styling the
+  // background colours of each panel in the
+  // project UI
+  .red {
+    background-color: rgba(220, 83, 81, 1);
+  }
+
+  .green {
+    background-color: rgba(187, 225, 123, 1);
+  }
+
+  .blue {
+    background-color: rgba(131, 150, 225, 1);
+  }
+
+  .purple {
+    background-color: rgba(155, 121, 170, 1);
+  }
+
+  .yellow {
+      background-color: rgba(235, 229, 39, 1);
+  }
+
+  .violet {
+      background-color: rgba(213, 118, 211, 1);
+  }
+
+  .orange {
+    background-color: rgba(213, 151, 46, 1);
+  }
+
+  .turquoise {
+    background-color: rgba(105, 203, 217, 1);
+  }
+
+  @supports (display: grid) {
+    .grid > * {
+      margin: 0;
+    }
+  }
 }
 
