@@ -22,7 +22,7 @@ export class AirshipProvider {
     this.initialize()
   }
 
-  create(airship: Airship) {
+  createOrUpdate(airship: Airship) {
     return this.db.object<Airship>(`/airship/${airship._id}`)
       .set(airship)
     //fazer um catch pra pegar os erros
@@ -40,7 +40,7 @@ export class AirshipProvider {
       (ref: firebase.database.Reference) => ref.orderByChild('timestamp')))
   }
 
-  private mapListKeys<T>(list: AngularFireList<T>): Observable<T[]> {
+  public mapListKeys<T>(list: AngularFireList<T>): Observable<T[]> {
     return list
       .snapshotChanges()
       .map(actions => actions.map(action => ({ $key: action.key, ...action.payload.val() })));

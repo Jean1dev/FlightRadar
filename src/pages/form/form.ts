@@ -34,7 +34,7 @@ export class FormPage {
   }
 
   public put() {
-    this.service.create(this.dataForm)
+    this.service.createOrUpdate(this.dataForm)
     this.navCtrl.pop()
   }
 

@@ -1,3 +1,4 @@
+import { Airship } from './Airship';
 import BaseLayout from "./BaseLayout";
 import Ferramentas from "../utils/Ferramentas";
 import Rings from "./Rings";
@@ -112,8 +113,19 @@ export default class Canvas extends BaseLayout {
         this.sweepAngle += this.sweepSpeed / this.FPS
     }
 
-    public putAirship() {
-
+    public putAirship(ship: Airship) {
+        const pixel = this.grid.converteToPx(ship.x, ship.y)
+        const rad = (Math.abs(ship.direction - 360) * Math.PI / 180)
+        this._CONTEXT.save()
+        this._CONTEXT.beginPath()
+        this._CONTEXT.font = "12px Georgia"
+        this._CONTEXT.fillStyle = 'black'
+        this._CONTEXT.fillText(ship._id, pixel.x + ship.width / 2, pixel.y - ship.height / 2)
+       // this._CONTEXT.translate(pixel.x, pixel.y - ship.z / 10)
+        this._CONTEXT.translate(0, 0)
+        this._CONTEXT.rotate(rad)
+        this._CONTEXT.drawImage('imgs/airship.png', - ship.width / 2, - ship.height / 2)
+        this._CONTEXT.restore()
     }
 
     drawCircle() {

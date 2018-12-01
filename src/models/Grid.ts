@@ -1,20 +1,20 @@
 import Rings from "./Rings";
 import BaseLayout from "./BaseLayout";
 
-export default class Grid extends BaseLayout{
+export default class Grid extends BaseLayout {
 
     defaultWidth = 500
     defaultHeight = 500
-    
-    cell ?: {
+
+    cell?: {
         width: any,
         height: any
     }
-    center ?: {
+    center?: {
         x: any,
         y: any
     }
-    size ?: {
+    size?: {
         x: any,
         y: any
     }
@@ -35,6 +35,13 @@ export default class Grid extends BaseLayout{
         this.size = {
             x: (CanvasObjc.width / 10) / 10 - 1,
             y: (CanvasObjc.height / 10) / 10 - 1
+        }
+    }
+
+    public converteToPx(x, y) {
+        return {
+            x: this.center.x + (x * this.cell.width),
+            y: this.center.y + (y * this.cell.height) * (-1)
         }
     }
 
