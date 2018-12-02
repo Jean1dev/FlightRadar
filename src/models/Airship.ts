@@ -30,6 +30,17 @@ export class Airship extends AirshipAttributes {
         return Math.floor(Math.random() * (999 - 1))
     }
 
+    public avioesProximos(x, y, old_x, old_y, minDistance): string{
+        let distance = this.matematica.distanceBetweenPoints(parseFloat(x), parseFloat(y), parseFloat(old_x), parseFloat(old_y))
+        
+        if(typeof distance == 'boolean') return ``
+        if(distance < 0 ) distance *= -1
+
+        let minDinstance = parseFloat(minDistance)
+        if(distance < minDinstance) return String(distance)
+        return ``
+    }
+
     public move(x, y, ship): Airship {
         let obj = this.somethingToThis(ship)
         obj.raio = this.matematica.calcular_raio(x, y)

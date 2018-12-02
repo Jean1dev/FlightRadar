@@ -122,15 +122,17 @@ export default class Canvas extends BaseLayout {
         img.src = 'assets/imgs/airship.png'
         const pixel = this.grid.converteToPx(ship.x, ship.y)
         const rad = (Math.abs(ship.direction - 360) * Math.PI / 180)
+        const z =  Math.random() * (420 - (350) + 1) + (350)
         this._CONTEXT.save()
         this._CONTEXT.beginPath()
         this._CONTEXT.font = "12px Georgia"
-        this._CONTEXT.fillStyle = 'black'
+        this._CONTEXT.fillStyle = 'red'
         this._CONTEXT.fillText(ship._id, pixel.x + ship.width / 2, pixel.y - ship.height / 2)
-       // this._CONTEXT.translate(pixel.x, pixel.y - ship.z / 10)
-        this._CONTEXT.translate(0, 0)
+        //this._CONTEXT.translate(pixel.x, pixel.y - z / 10)
+        //this._CONTEXT.translate(0, 0)s
+        //    aviaozinho de texto      '✈'
         this._CONTEXT.rotate(rad)
-        this._CONTEXT.drawImage(img, - ship.width / 2, - ship.height / 2)
+       // this._CONTEXT.drawImage(img, ship.x , ship.y)
         this._CONTEXT.restore()
     }
 

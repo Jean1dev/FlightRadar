@@ -46,6 +46,22 @@ export default class Matematica {
         return { x: x, y: y}
     }
 
+    public distanceBetweenPoints(x0, y0, x1, y1): any {
+        if ((x0 !== 0 && !x0) || (y0 !== 0 && !y0) || (x1 !== 0 && !x1) || (y1 !== 0 && !y1)) {
+            return false
+        }
+        if (typeof x0 !== 'number' || typeof y0 !== 'number' ||
+            typeof x1 !== 'number' || typeof y1 !== 'number') {
+            return false
+        }
+
+        var xbXa, ybYa;
+
+        xbXa = Math.pow(x1 - x0, 2).toFixed(2);
+        ybYa = Math.pow(y1 - y0, 2).toFixed(2);
+        return Math.sqrt(parseFloat(xbXa) + parseFloat(ybYa)).toFixed(2);
+    }
+
     public calcular_angulo(x: number, y: number): number {
         if(x == 0  && y == 0) return 0
 

@@ -135,7 +135,7 @@
                   <ion-label floating></ion-label>
                   <ion-input [(ngModel)]="nDistanciaMin" type="number" placeholder="Distancia minima:"></ion-input>
                 </ion-item>
-                <button ion-button outline color="positive" block>
+                <button (click)="avioesProximos()" ion-button outline color="positive" block>
                   Avioes Proximos
                 </button>
               </ion-list>

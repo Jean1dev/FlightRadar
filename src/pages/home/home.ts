@@ -48,22 +48,22 @@ export class HomePage {
     this.airships = this.FireService.airships
     //this.airships = this.FireService.mapListKeys<Airship>(this.alist)
     this.run()
+    console.log(`debugger`)
   }
 
   public loop(): void {
     Observable.interval(1000 / this.canvas.getFPS()).subscribe(() => {
       this.run()
     })
+    this.drawAirships()
   }
 
   public run() {
-    console.log(`debug`)
     this.canvas.clearCanvas()
     this.canvas.drawMap()
     this.canvas.configureRings()
     this.canvas.configureSweep()
     this.canvas.animateSweep()
-    this.drawAirships()
   }
 
   public drawAirships() {
@@ -165,6 +165,26 @@ export class HomePage {
           str = str.concat(`aviao: ${item._id} - raio : ${item.raio} \n`)
         }
       })
+      alert(str)
+    })
+  }
+
+  public avioesProximos() {
+    let str = ``
+    let dist = this.nDistanciaMin
+    this.airships.forEach(arr => {
+      const list: any = arr
+      // vai comparando todos os avioes entre si
+      for(let i = 0; i < list.length; i++){
+
+        for(let j = i + 1; j < list.length; j++){
+
+          let str_temp = this.data.avioesProximos(list[i].x, list[i].y, list[j].x, list[j].x, dist)
+          if(str_temp !== ``){
+            str = str.concat(`aviao: ${list[i]._id} - distancia: ${str_temp} - segundo aviao: ${list[j]._id}`)
+          }
+        }
+      }
       alert(str)
     })
   }
