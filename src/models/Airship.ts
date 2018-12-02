@@ -41,6 +41,10 @@ export class Airship extends AirshipAttributes {
 
     public escalonar(x, y, ship): Airship {
         let obj = this.somethingToThis(ship)
+        let temp = this.matematica.escalonar(x, y, obj.x, obj.y)
+        obj.x = temp.x
+        obj.y = temp.y
+        obj.raio = temp.raio
         return obj
     }
 
@@ -58,6 +62,10 @@ export class Airship extends AirshipAttributes {
         obj.angle = this.matematica.calcular_angulo(obj.x, obj.y)
         obj.raio = this.matematica.calcular_raio(obj.x, obj.y)
         return obj
+    }
+
+    public createNewAirship(obj): Airship {
+        return this.somethingToThis(obj)
     }
 
     private somethingToThis(something): Airship {

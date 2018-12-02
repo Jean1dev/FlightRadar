@@ -25,7 +25,9 @@ export class AirshipProvider {
   createOrUpdate(airship: Airship) {
     return this.db.object<Airship>(`/airship/${airship._id}`)
       .set(airship)
-    //fazer um catch pra pegar os erros
+      .catch(err => {
+        console.log(`erro ao inserir`, err)
+      })
   }
 
   remove(key: any) {

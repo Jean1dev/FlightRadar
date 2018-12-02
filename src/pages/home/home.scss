@@ -5,6 +5,7 @@ page-home {
     margin-right: 500px;
   }
 
+
     canvas {
         background: #eee;
       }
@@ -19,6 +20,9 @@ page-home {
     img {
       position: relative;
       float: right;
+      width: 300px;
+      right: 90px;
+      margin-top: -190px;
   }
 
   .grid {
@@ -44,41 +48,50 @@ page-home {
   .grid > * {
     margin-bottom: 10px;
     }
-  // Add the necessary classes for styling the
-  // background colours of each panel in the
-  // project UI
-  .red {
-    background-color: rgba(220, 83, 81, 1);
-  }
 
-  .green {
+  .box_green {
     background-color: rgba(187, 225, 123, 1);
+    size: -10px;
+    
   }
 
-  .blue {
+  .box_turquoise{
+    background-color: rgb(190, 126, 216);
+    size: -10px;
+  }
+
+  .box_orange {
+    background-color: rgb(247, 152, 9);
+    
+  }
+
+  .box_blue {
     background-color: rgba(131, 150, 225, 1);
   }
 
-  .purple {
-    background-color: rgba(155, 121, 170, 1);
+  .box_yellow {
+    background-color: rgba(235, 229, 39, 1);
+    
+}
+
+  .box_pink {
+    background-color: rgb(230, 21, 184);
+    size: 100px;
+    
   }
 
-  .yellow {
-      background-color: rgba(235, 229, 39, 1);
+  .coluna1{
+    padding-left: 100px;
   }
 
-  .violet {
-      background-color: rgba(213, 118, 211, 1);
+  .coluna2{
+    padding-right: 80px;
   }
 
-  .orange {
-    background-color: rgba(213, 151, 46, 1);
+  #gridlayoyt {
+    margin-left: 188px;
   }
-
-  .turquoise {
-    background-color: rgba(105, 203, 217, 1);
-  }
-
+ 
   @supports (display: grid) {
     .grid > * {
       margin: 0;

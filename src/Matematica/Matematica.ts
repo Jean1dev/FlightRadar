@@ -2,6 +2,19 @@ export default class Matematica {
 
     constructor() {}
 
+    public escalonar(x: number, y: number, old_x: number, old_y: number) {
+        let escalonar_x = x / 100
+        let escalonar_y = y / 100
+        let novo_x = old_x * escalonar_x
+        let novo_y = old_y * escalonar_y
+        let novo_raio = this.calcular_raio(novo_x, novo_y)
+        return {
+            x: novo_x,
+            y: novo_y,
+            raio: novo_raio
+        }
+    }
+
     public calcular_raio(x:number, y:number): number {
         let raio = Math.pow(x, 2) + Math.pow(y, 2)
         return Math.sqrt(raio)

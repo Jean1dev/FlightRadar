@@ -33,6 +33,7 @@ export class HomePage {
   public nX: number
   public nY: number
   public nAngulo: number
+  public nRaio: number
   public nDistanciaMin: number
   public nTempoMin: number
 
@@ -56,6 +57,7 @@ export class HomePage {
   }
 
   public run() {
+    console.log(`debug`)
     this.canvas.clearCanvas()
     this.canvas.drawMap()
     this.canvas.configureRings()
@@ -65,9 +67,24 @@ export class HomePage {
   }
 
   public drawAirships() {
-    /*this.airships.forEach(item => {
-      item.map(oi => console.log(oi))
-    })*/
+    this.airships.forEach(arr => {
+      arr.map(ship => {
+        let temp = this.data.createNewAirship(ship)
+        this.canvas.putAirship(temp)
+      })
+    })
+  }
+
+  public refresh() {
+    this.run()
+  }
+
+  public removeAll() {
+    this.airships.forEach(arr => {
+      arr.map((item: any) => {
+        this.FireService.remove(item.$key)
+      })
+    })
   }
 
   public start() {
@@ -85,12 +102,13 @@ export class HomePage {
     this.nTempoMin = 0
     this.nX = 0
     this.nY = 0
+    this.nRaio = 0
   }
 
   /* TRANSFORMACOES ************************************************************
     FICO XANFES EU SEI
   **/
-  private atualizarTodos(metodo, parametros) {
+  private async atualizarTodos(metodo, parametros) {
     this.airships.forEach(arr => {
       arr.map(function (item) {
         let cmd = `this.data.${metodo}(${parametros})`
@@ -100,10 +118,11 @@ export class HomePage {
     })
   }
 
-  private atualizarSomenteUm(metodo, parametros) {
+  private async atualizarSomenteUm(metodo, parametros) {
+    let guardaValor = this.nSelected
     this.airships.forEach(arr => {
       arr.map(function (item) {
-        if (item._id == this.nSelected) {
+        if (item._id == guardaValor) {
           let cmd = `this.data.${metodo}(${parametros})`
           let novoItem = eval(cmd)
           this.FireService.createOrUpdate(novoItem)
@@ -118,7 +137,6 @@ export class HomePage {
     } else {
       this.atualizarSomenteUm('move', 'this.nX, this.nY, item')
     }
-    this.limparCampos()
   }
 
   public escalonar(): void {
@@ -127,7 +145,6 @@ export class HomePage {
     } else {
       this.atualizarSomenteUm('escalonar', 'this.nX, this.nY, item')
     }
-    this.limparCampos()
   }
 
   public rotacionar(): void {
@@ -136,7 +153,20 @@ export class HomePage {
     } else {
       this.atualizarSomenteUm('rotacionar', 'this.nX, this.nY, this.nAngulo item')
     }
-    this.limparCampos()
+  }
+
+  public avioesProximosBase() {
+    let str = ``
+    let raio = this.nRaio
+    if(raio == undefined) raio = 0
+    this.airships.forEach(arr => {
+      arr.map((item: any) => {
+        if(parseInt(item.raio) <= raio){
+          str = str.concat(`aviao: ${item._id} - raio : ${item.raio} \n`)
+        }
+      })
+      alert(str)
+    })
   }
 }
 

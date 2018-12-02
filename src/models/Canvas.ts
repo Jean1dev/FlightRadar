@@ -18,13 +18,17 @@ export default class Canvas extends BaseLayout {
         this.grid = new Grid
         this.rings = new Rings
         this.ferramentas = new Ferramentas
-        this.FPS = 120
-        this.sweepAngle = 270
-        this.sweepSpeed = 120
+        this.valoresIniciais()
     }
 
     getFPS() {
         return this.FPS
+    }
+
+    valoresIniciais(): void {
+        this.FPS = 120
+        this.sweepAngle = 270
+        this.sweepSpeed = 120
     }
 
     configurar() {
@@ -114,6 +118,8 @@ export default class Canvas extends BaseLayout {
     }
 
     public putAirship(ship: Airship) {
+        const img = new Image()
+        img.src = 'assets/imgs/airship.png'
         const pixel = this.grid.converteToPx(ship.x, ship.y)
         const rad = (Math.abs(ship.direction - 360) * Math.PI / 180)
         this._CONTEXT.save()
@@ -124,7 +130,7 @@ export default class Canvas extends BaseLayout {
        // this._CONTEXT.translate(pixel.x, pixel.y - ship.z / 10)
         this._CONTEXT.translate(0, 0)
         this._CONTEXT.rotate(rad)
-        this._CONTEXT.drawImage('imgs/airship.png', - ship.width / 2, - ship.height / 2)
+        this._CONTEXT.drawImage(img, - ship.width / 2, - ship.height / 2)
         this._CONTEXT.restore()
     }
 

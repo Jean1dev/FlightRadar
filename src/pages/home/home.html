@@ -12,162 +12,158 @@
 </ion-header>
 
 <ion-content padding>
-  <div [ngSwitch]="view">
+  <div [ngSwitch]="view" id="gridlayoyt">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="ion-canvas">
+            <canvas #canvas></canvas>
+          </div>
+          <button ion-button (click)="start()">Vai filhao</button>
+          <button ion-button (click)="limparCampos()">Limpar Campos</button>
+          <button ion-button (click)="limparCampos()">Refrescar a tela</button>
+          <button ion-button (click)="removeAll()">Remover todos avioes</button>
+        </ion-col>
+
+      </ion-row>
+      <ion-row>
+        <ion-col class="coluna1">
+          <div class="box_green">
+            <ion-card id="card-padrao">
+              <ion-list>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nX" type="number" placeholder="X:"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nY" type="number" placeholder="Y:"></ion-input>
+                </ion-item>
+                <button (click)="mover()" ion-button outline color="positive" block>
+                  Mover
+                </button>
+              </ion-list>
+            </ion-card>
+          </div>
 
 
-    <div class="ion-canvas">
-
-      <div class="prof">
-        <img src="assets/imgs/kinho.png"/>
-      </div>
-
-      <canvas #canvas></canvas>
-    </div>
-    <button ion-button (click)="start()">Vai filhao</button>
-    <button ion-button (click)="limparCampos()">Limpar Campos</button>
-
-
-
-    <!-- GRID-->
-    <div class="grid">
-
-
-      <div class="box green">
-        <ion-card id="card-padrao">
-          <ion-list>
-          <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nX" type="number" placeholder="X:"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nY" type="number" placeholder="Y:"></ion-input>
-            </ion-item>
-            <button (click)="mover()" ion-button outline color="positive" block>
-              MOVER
-            </button>
-          </ion-list>
-        </ion-card>
-      </div>
+          <div class="box_orange">
+            <ion-card id="card-padrao">
+              <ion-list>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nX" type="number" placeholder="X:"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nY" type="number" placeholder="Y:"></ion-input>
+                </ion-item>
+                <button (click)="escalonar()" ion-button outline color="positive" block>
+                  Escalonar
+                </button>
+              </ion-list>
+            </ion-card>
+          </div>
 
 
-      <div class="box green">
-        <ion-card id="card-padrao">
-          <ion-list>
+          <div class="box_turquoise">
+            <ion-card id="card-padrao">
+              <ion-list>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nX" type="number" placeholder="X:"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nY" type="number" placeholder="Y:"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nAngulo" type="number" placeholder="Angulo:"></ion-input>
+                </ion-item>
+                <button (click)="rotacionar()" ion-button outline color="positive" block>
+                  Rotacionar
+                </button>
+              </ion-list>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
 
-          <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nX" type="number" placeholder="X:"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nY" type="number" placeholder="Y:"></ion-input>
-            </ion-item>
-            <button (click)="escalonar()" ion-button outline color="positive" block>
-              ESCALONAR
-            </button>
-          </ion-list>
-        </ion-card>
-      </div>
+      <ion-row>
+        <ion-col class="coluna2">
 
-
-      <div class="box turquoise">
-        <ion-card id="card-padrao">
-          <ion-list>
-
-          <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nX" type="number" placeholder="X:"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nY" type="number" placeholder="Y:"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nAngulo" type="number" placeholder="Angulo:"></ion-input>
-            </ion-item>
-            <button (click)="rotacionar()" ion-button outline color="positive" block>
-              ROTACIONAR
-            </button>
-          </ion-list>
-        </ion-card>
-      </div>
+          <div class="box_blue">
+            <ion-card id="card-padrao">
+              <ion-list>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nRaio" type="number" placeholder="Informe o raio:"></ion-input>
+                </ion-item>
+                <button (click)="avioesProximosBase()" ion-button outline color="positive" block>
+                  Distancia para base
+                </button>
+              </ion-list>
+            </ion-card>
+          </div>
 
 
-      <div class="box blue">
-        <ion-card id="card-padrao">
-          <ion-list>
-
-          <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nDistanciaMin" type="number" placeholder="Distancia minima:"></ion-input>
-            </ion-item>
-            <button ion-button outline color="positive" block>
-              Avioes proximos ao Aeroporto
-            </button>
-          </ion-list>
-        </ion-card>
-      </div>
-
-
-      <div class="box turquoise">
-        <ion-card id="card-padrao">
-          <ion-list>
-
-          <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nDistanciaMin" type="number" placeholder="Distancia minima:"></ion-input>
-            </ion-item>
-            <button ion-button outline color="positive" block>
-              Avioes proximos
-            </button>
-          </ion-list>
-        </ion-card>
-      </div>
+          <div class="box_yellow">
+            <ion-card id="card-padrao">
+              <ion-list>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nDistanciaMin" type="number" placeholder="Distancia minima:"></ion-input>
+                </ion-item>
+                <button ion-button outline color="positive" block>
+                  Avioes Proximos
+                </button>
+              </ion-list>
+            </ion-card>
+          </div>
 
 
-      <div class="box blue">
-        <ion-card id="card-padrao">
-          <ion-list>
+          <div class="box_pink">
+            <ion-card id="card-padrao">
+              <ion-list>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating></ion-label>
+                  <ion-input [(ngModel)]="nTempoMin" type="number" placeholder="Tempo minimo:"></ion-input>
+                </ion-item>
+                <button ion-button outline color="positive" block>
+                  Em Rota de colisao
+                </button>
+              </ion-list>
+            </ion-card>
+          </div>
+        </ion-col>
 
-          <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nSelected" type="number" placeholder="ID:"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating></ion-label>
-              <ion-input [(ngModel)]="nTempoMin" type="number" placeholder="Tempo minimo:"></ion-input>
-            </ion-item>
-            <button ion-button outline color="positive" block>
-              Em Rota de colisao
-            </button>
-          </ion-list>
-        </ion-card>
-      </div>
-
-    </div>
-
+      </ion-row>
+    </ion-grid>
   </div>
 
   <ion-fab right bottom>

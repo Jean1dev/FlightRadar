@@ -15,9 +15,12 @@
 
                 <button ion-item  (click)="itemTapped($event, item)">
                     <ion-icon name="md-jet" item-start></ion-icon>
+                    ID: {{item._id}}
                     Km/h : {{item.velocity}} 
                     <!--<div class="item-note" item-end>-->
                      raio: {{item.raio}}
+                     X: {{item.x}}
+                     Y: {{item.y}}
                     
                   </button>
         
