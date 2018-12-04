@@ -10,6 +10,7 @@ export abstract class AirshipAttributes {
     velocity?: any
     raio?: number // esqueci como e raio em ingles
     angle?: number
+    isCartesiano?: boolean
 }
 
 export class Airship extends AirshipAttributes {
@@ -22,12 +23,23 @@ export class Airship extends AirshipAttributes {
     constructor() {
         super()
         this._id = this.generateId()
+        this.isCartesiano = true
         this.timestamp = new Date().getTime()
         this.matematica = new Matematica
     }
 
     private generateId() {
         return Math.floor(Math.random() * (999 - 1))
+    }
+
+    public antesGravar(): void {
+        if(this.isCartesiano){
+            this.raio = this.matematica.calcular_raio(this.x, this.y)
+            this.angle = this.matematica.calcular_angulo(this.x, this.y)    
+        }else{
+            this.x = this.matematica.calcular_X(this.raio, this.angle)
+            this.y = this.matematica.calcular_Y(this.raio, this.angle)
+        }
     }
 
     public avioesProximos(x, y, old_x, old_y, minDistance): string{
@@ -88,6 +100,7 @@ export class Airship extends AirshipAttributes {
         ship.width = this.tratarValor(something.width)
         ship.x = this.tratarValor(something.x)
         ship.y = this.tratarValor(something.y)
+        ship.isCartesiano = this.tratarValor(something.isCartesiano)
         ship.velocity = this.tratarValor(something.velocity)
         return ship
     }

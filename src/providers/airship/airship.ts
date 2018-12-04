@@ -23,6 +23,7 @@ export class AirshipProvider {
   }
 
   createOrUpdate(airship: Airship) {
+    airship.antesGravar()
     return this.db.object<Airship>(`/airship/${airship._id}`)
       .set(airship)
       .catch(err => {

@@ -34,6 +34,7 @@ export class FormPage {
   }
 
   public put() {
+    console.log(this.dataForm)
     this.service.createOrUpdate(this.dataForm)
     this.navCtrl.pop()
   }

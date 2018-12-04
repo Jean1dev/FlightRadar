@@ -55,7 +55,6 @@ export class HomePage {
     Observable.interval(1000 / this.canvas.getFPS()).subscribe(() => {
       this.run()
     })
-    this.drawAirships()
   }
 
   public run() {
@@ -64,6 +63,7 @@ export class HomePage {
     this.canvas.configureRings()
     this.canvas.configureSweep()
     this.canvas.animateSweep()
+    this.drawAirships()
   }
 
   public drawAirships() {

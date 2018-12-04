@@ -48,7 +48,7 @@ export default class Canvas extends BaseLayout {
 
     setupCanvas() {
         this._CONTEXT = this._CANVAS.getContext('2d');
-        this._CONTEXT.fillStyle = "#3e3e3e";
+        this._CONTEXT.fillStyle = `white`//"#3e3e3e";
         this._CONTEXT.fillRect(0, 0, this.grid.defaultWidth, this.grid.defaultHeight);
     }
 
@@ -128,11 +128,12 @@ export default class Canvas extends BaseLayout {
         this._CONTEXT.font = "12px Georgia"
         this._CONTEXT.fillStyle = 'red'
         this._CONTEXT.fillText(ship._id, pixel.x + ship.width / 2, pixel.y - ship.height / 2)
-        //this._CONTEXT.translate(pixel.x, pixel.y - z / 10)
-        //this._CONTEXT.translate(0, 0)s
+       // this._CONTEXT.translate(pixel.x, pixel.y - z / 10)
+        this._CONTEXT.translate(0, 0)
         //    aviaozinho de texto      '✈'
         this._CONTEXT.rotate(rad)
-       // this._CONTEXT.drawImage(img, ship.x , ship.y)
+        console.log(ship.x, ship.y)
+        this._CONTEXT.drawImage(img, pixel.x + ship.width / 2, pixel.y - ship.height / 2)
         this._CONTEXT.restore()
     }
 
